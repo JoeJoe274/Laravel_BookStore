@@ -9,9 +9,9 @@ class CustomerValidator
     public function store(array $inputs)
     {
         return Validator::make($inputs, [
-            'name'    => ['required'],
-            'address' => ['required'],
-            'city'    => ['required']
+            'name'    => ['required', 'unique:customers'],
+            'address'  => ['nullable'],
+            'city'     => ['nullable']
         ]);
     }
 
