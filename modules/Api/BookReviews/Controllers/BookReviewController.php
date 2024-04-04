@@ -41,7 +41,12 @@ class BookReviewController extends BaseController
 
     public function store(Request $request)
     {
-        $validation = $this->validator->store($params)
+        $inputs = array_filter($request->only(self::ATTRIBUTES), function($v)
+        {
+            return $v !== null;
+        });
+
+        $validation = $this->validator->store($inputs);
     }
 
     public function delete($id)
