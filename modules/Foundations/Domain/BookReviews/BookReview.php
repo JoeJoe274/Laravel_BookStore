@@ -13,6 +13,7 @@ class BookReview extends Model
 
     protected $fillable = [
         'book_id',
+        'description'
     ];
 
     // public function book()

@@ -48,6 +48,13 @@ class BookReviewService extends BaseController
         }
     }
 
+    public function createBookReview(array $params)
+    {
+        // return 'service';
+        $bookreview = $this->bookReviewRepository->insertGetId($params);
+        return $this->sendResponse($bookreview, 'Bookreview is created Successfully!', 0, 201);
+    }
+
     public function deleteBookReview($id)
     {
         $bookreview = $this->bookReviewRepository->getBookReviewById($id);

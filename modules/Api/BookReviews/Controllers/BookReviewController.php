@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use BookStore\Api\Common\BaseController as BaseController;
 use BookStore\Foundations\Domain\BookReviews\BookReview;
 use BookStore\Api\BookReviews\Services\BookReviewService;
+use BookStore\Api\BookReviews\Validation\BookReviewValidator;
 
 class BookReviewController extends BaseController
 {
@@ -15,9 +16,11 @@ class BookReviewController extends BaseController
     ];
 
     public function __construct(
-        BookReviewService $service
+        BookReviewService $service,
+        BookReviewValidator $validator
     ) {
         $this->service = $service;
+        $this->validator = $validator;
     }
 
     public function index(Request $request)
@@ -47,6 +50,14 @@ class BookReviewController extends BaseController
         });
 
         $validation = $this->validator->store($inputs);
+
+        if($validation->fails()){
+            return $this->sendError($validation->errors(), '', 404);
+        }
+
+        $results = $this->service->createBookReview($inputs);
+        return $results;
+
     }
 
     public function delete($id)
