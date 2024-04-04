@@ -52,7 +52,7 @@ class BookReviewController extends BaseController
         $validation = $this->validator->store($inputs);
 
         if($validation->fails()){
-            return $this->sendError($validation->errors(), '', 404);
+            return $this->sendError($validation->errors(), '', 400);
         }
 
         $results = $this->service->createBookReview($inputs);

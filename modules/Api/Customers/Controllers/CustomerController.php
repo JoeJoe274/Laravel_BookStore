@@ -57,7 +57,7 @@ class CustomerController extends BaseController
 
         if($validation->fails()) {
 
-            return $this->sendError($validation->errors(), '', 404);
+            return $this->sendError($validation->errors(), '', 400);
         }
 
         $results = $this->service->createCustomer($inputs);
@@ -76,7 +76,7 @@ class CustomerController extends BaseController
 
         if($validation->fails()) {
 
-            return $this->sendError($validation->errors(), '', 404);
+            return $this->sendError($validation->errors(), '', 400);
         }
 
         $results = $this->service->updateCustomer($inputs, $id);

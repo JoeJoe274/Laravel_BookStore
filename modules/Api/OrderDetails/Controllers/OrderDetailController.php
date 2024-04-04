@@ -6,13 +6,22 @@ use Illuminate\Http\Request;
 use BookStore\Api\Common\BaseController as BaseController;
 use BookStore\Foundations\Domain\OrderDetails\OrderDetail;
 use BookStore\Api\OrderDetails\Services\OrderDetailService;
+use BookStore\Api\OrderDetails\Validation\OrderDetailValidator;
 
 class OrderDetailController extends BaseController
 {
+    const ATTRIBUTES = [
+        'order_id',
+        'book_id',
+        'qty'
+    ];
+
     public function __construct(
-        OrderDetailService $service
+        OrderDetailService $service,
+        OrderDetailValidator $validator
     ){
         $this->service = $service;
+        $this->validator = $validator;
     }
 
     public function index(Request $request)
@@ -32,6 +41,23 @@ class OrderDetailController extends BaseController
     {
         $results = $this->service->getOrderDetailById($id);
 
+        return $results;
+    }
+
+    public function store(Request $request)
+    {
+        $inputs = array_filter($request->only(self::ATTRIBUTES), function($v)
+        {
+            return $v !== null;
+        });
+
+        $validation = $this->validator->store($inputs);
+
+        if($validation->fails()){
+            return $this->sendError($validation->errors(), '', 400);
+        }
+
+        $results = $this->service->createOrderDetail($inputs);
         return $results;
     }
 

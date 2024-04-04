@@ -52,6 +52,7 @@ Route::delete('/orders/{id}', [OrderController::class, 'delete']);
 
 Route::get('/orderdetails', [OrderDetailController::class, 'index']);
 Route::get('/orderdetails/{id}', [OrderDetailController::class, 'show']);
+Route::post('/orderdetails', [OrderDetailController::class, 'store']);
 Route::delete('/orderdetails/{id}', [OrderDetailController::class, 'delete']);
 });
 // Route::post('books', [BookController::class, 'getBooks']);

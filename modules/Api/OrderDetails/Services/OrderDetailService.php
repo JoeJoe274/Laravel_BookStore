@@ -47,6 +47,13 @@ class OrderDetailService extends BaseController
         }
     }
 
+    public function createOrderDetail(array $params)
+    {
+        // return 'service';
+        $orderdetail = $this->orderDetailRepository->insertGetId($params);
+        return $this->sendResponse($orderdetail, 'Order Detail is Created Successfully!', 0, 201);
+    }
+
     public function deleteOrderDetail($id)
     {
         $orderdetail = $this->orderDetailRepository->getOrderDetailById($id);
