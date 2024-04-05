@@ -3,8 +3,8 @@
 namespace BookStore\Api\BookReviews\Services;
 
 use BookStore\Api\Common\BaseController;
-use BookStore\Foundations\Domain\BookReviews\Repositories\Eloquent\BookReviewRepository;
 use BookStore\Api\BookReviews\Resources\BookReviewResource;
+use BookStore\Foundations\Domain\BookReviews\Repositories\Eloquent\BookReviewRepository;
 use BookStore\Foundations\Domain\BookReviews\BookReview;
 use Exception;
 
@@ -34,17 +34,26 @@ class BookReviewService extends BaseController
         }
     }
 
+    // public function getBookReviewById($id)
+    // {
+    //     $bookreview = $this->bookReviewRepository->getBookReviewById($id);
+
+    //     if(!empty($bookreview)) {
+    //         $bookreview = new BookReviewResource($bookreview);
+
+    //         return $this->sendResponse($bookreview, 'Bookreview retrieved by ID Successfully!');
+    //     }
+    //     else {
+    //         return $this->sendResponse($bookreview, 'There is no record to retrieve!');
+    //     }
+    // }
     public function getBookReviewById($id)
     {
-        $bookreview = $this->bookReviewRepository->getBookReviewById($id);
+        $book = $this->bookReviewRepository->getBookById($id);
 
-        if(!empty($bookreview)) {
-            $bookreview = new BookReviewResource($bookreview);
-
-            return $this->sendResponse($bookreview, 'Bookreview retrieved by ID Successfully!');
-        }
-        else {
-            return $this->sendResponse($bookreview, 'There is no record to retrieve!');
+        if(empty($book)) {
+            // return 'service';
+            return $this->sendResponse($book, 'There is NO Book!');
         }
     }
 

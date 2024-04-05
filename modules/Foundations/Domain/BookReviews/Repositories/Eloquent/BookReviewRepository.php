@@ -28,4 +28,10 @@ class BookReviewRepository extends BaseRepository implements BookReviewRepositor
         return $this->connection()
         ->find($id);
     }
+
+    public function getBookById($id)
+    {
+        return $this->connection()
+        ->find($id);
+    }
 }

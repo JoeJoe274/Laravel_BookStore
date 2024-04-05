@@ -11,7 +11,7 @@ class OrderValidator
         return Validator::make($inputs, [
             'customer_id'  =>  ['required'],
             'amount'       =>  ['required', 'int'],
-            'date'         =>  ['required']
+            'date'         =>  ['required', 'date_format:Y:m:d h:i:s']
         ]);
     }
 
