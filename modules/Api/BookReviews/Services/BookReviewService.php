@@ -49,11 +49,15 @@ class BookReviewService extends BaseController
     // }
     public function getBookReviewById($id)
     {
-        $book = $this->bookReviewRepository->getBookById($id);
+        $bookreview = $this->bookReviewRepository->getBookReviewById($id);
 
-        if(empty($book)) {
-            // return 'service';
-            return $this->sendResponse($book, 'There is NO Book!');
+        if(empty($bookreview)) {
+            return $this->sendResponse($bookreview, 'There in NO Review!');
+        }
+        $bookreview = new BookReviewResource($bookreview);
+
+        if(empty($bookreview->review)) {
+            return 'service';
         }
     }
 
