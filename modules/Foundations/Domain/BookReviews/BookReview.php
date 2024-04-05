@@ -5,6 +5,7 @@ namespace BookStore\Foundations\Domain\BookReviews;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use BookStore\Foundations\Domain\Books\Book;
 
 class BookReview extends Model
 {
@@ -16,8 +17,8 @@ class BookReview extends Model
         'description'
     ];
 
-    // public function book()
-    // {
-    //     return $this->belongsTo(Book::class);
-    // }
+    public function book()
+    {
+        return $this->belongsTo(Book::class);
+    }
 }

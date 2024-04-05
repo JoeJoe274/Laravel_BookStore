@@ -10,7 +10,7 @@ class BookReviewValidator
     {
         return validator::make($inputs, [
             'book_id'      =>  ['required', 'int'],
-            'description'  =>  ['required', 'max:20']
+            'description'  =>  ['required']
         ]);
     }
 }

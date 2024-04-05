@@ -13,7 +13,8 @@ class BookReviewResource extends JsonResource
             'book_id'       =>   $this->id,
             'description'   =>   $this->description,
             'created_at'    =>   $this->created_at->format('Y-m-d h:i:s'),
-            'updated_at'    =>   $this->updated_at->format('Y-m-d h:i:s')
+            'updated_at'    =>   $this->updated_at->format('Y-m-d h:i:s'),
+            'book'          =>   $this->book()->first()
         ];
     }
 }

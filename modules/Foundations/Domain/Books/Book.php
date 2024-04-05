@@ -5,6 +5,7 @@ namespace BookStore\Foundations\Domain\Books;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use BookStore\Foundations\Domain\BookReviews\BookReview;
 
 class Book extends Model
 {
@@ -20,9 +21,9 @@ class Book extends Model
         'price'
     ];
 
-    // public function bookreview()
-    // {
-    //     return $this->hasOne(BookReview::class);
-    // }
+    public function reviews()
+    {
+        return $this->hasMany(BookReview::class);
+    }
 
 }

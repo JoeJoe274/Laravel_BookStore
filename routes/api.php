@@ -39,10 +39,10 @@ Route::post('/customers', [CustomerController::class, 'store']);
 Route::put('/customers/{id}', [CustomerController::class, 'update']);
 Route::delete('/customers/{id}', [CustomerController::class, 'delete']);
 
-Route::get('/bookreviews', [BookReviewController::class, 'index']);
-Route::get('/bookreviews/{id}', [BookReviewController::class, 'show']);
-Route::post('/bookreviews', [BookReviewController::class, 'store']);
-Route::delete('/bookreviews/{id}', [BookReviewController::class, 'delete']);
+Route::get('/book/reviews', [BookReviewController::class, 'index']);
+Route::get('/book/{id}/reviews', [BookReviewController::class, 'show']);
+Route::post('/book/reviews', [BookReviewController::class, 'store']);
+Route::delete('/book/{id}/reviews', [BookReviewController::class, 'delete']);
 
 Route::get('/orders', [OrderController::class, 'index']);
 Route::get('/orders/{id}', [OrderController::class, 'show']);

@@ -19,7 +19,7 @@ class BookResource extends JsonResource
                                 'books/' . $this->id . '/' . $this->cover_url :'',
             'created_at'   =>   $this->created_at->format('Y-m-d h:i:s'),
             'updated_at'   =>   $this->updated_at->format('Y-m-d h:i:s'),
-            // 'book_review'  =>   $this->BookReview()->first()
+            'review'       =>   $this->reviews()->first()
         ];
     }
 }
