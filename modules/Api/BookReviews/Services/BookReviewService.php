@@ -7,15 +7,20 @@ use BookStore\Api\BookReviews\Resources\BookReviewResource;
 use BookStore\Foundations\Domain\BookReviews\Repositories\Eloquent\BookReviewRepository;
 use BookStore\Foundations\Domain\BookReviews\BookReview;
 use Exception;
+use BookStore\Foundations\Domain\Books\Repositories\Eloquent\BookRepository;
 
 class BookReviewService extends BaseController
 {
     protected $bookReviewRepository;
 
+    protected $bookRepository;
+
     public function __construct(
-        BookReviewRepository $bookReviewRepository
+        BookReviewRepository $bookReviewRepository,
+        BookRepository $bookRepository
     ) {
         $this->bookReviewRepository = $bookReviewRepository;
+        $this->bookRepository = $bookRepository;
     }
 
     public function getBookReviews(array $params)
@@ -49,17 +54,23 @@ class BookReviewService extends BaseController
     // }
     public function getBookReviewById($id)
     {
-        $bookreview = $this->bookReviewRepository->getBookReviewById($id);
+        $book = $this->bookRepository->getBookById($id);
 
-        if(empty($bookreview)) {
-            return $this->sendResponse($bookreview, 'There in NO Review!');
+        if(empty($book)) {
+            return $this->sendResponse($book, 'There is NO Book!');
         }
-        $bookreview = new BookReviewResource($bookreview);
 
-        if(empty($bookreview->review)) {
-            return 'service';
+        $bookreview = $this->bookReviewRepository->getBookReviewByBookId($id);
+
+        if($bookreview->isEmpty()) {
+            return $this->sendResponse($bookreview, 'This Book has No Review!');
+        }
+        else {
+
+            return $this->sendResponse($bookreview, 'Bookreview By Book ID!');
         }
     }
+
 
     public function createBookReview(array $params)
     {

@@ -29,9 +29,10 @@ class BookReviewRepository extends BaseRepository implements BookReviewRepositor
         ->find($id);
     }
 
-    public function getBookById($id)
+    public function getBookReviewByBookId($id)
     {
         return $this->connection()
-        ->find($id);
+        ->where('book_reviews.book_id', '=', $id)
+        ->get();
     }
 }
