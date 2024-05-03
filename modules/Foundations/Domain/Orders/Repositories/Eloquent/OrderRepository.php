@@ -34,4 +34,10 @@ class OrderRepository extends BaseRepository implements OrderRepositoryInterface
         return $this->connection()
         ->find($id);
     }
+
+    // public function createOrder(array $params)
+    // {
+    //     return $this->connection()
+    //     ->create($params);
+    // }
 }

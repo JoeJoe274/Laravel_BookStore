@@ -75,7 +75,7 @@ class BookService extends BaseController
 
             return $this->sendError('No Data', 'There is no record to Update!.', 404);
         }
-        // } else {
+        // else {
 
         //     $book = $this->bookRepository->update($id, $params);
 

@@ -25,6 +25,23 @@ class UserController extends BaseController
         $this->service = $service;
     }
 
+    public function index(Request $request) {
+        $inputsSpecification = $request->only(
+            'name',
+            'email',
+            'password'
+        );
+
+        $results = $this->service->getUsers($inputsSpecification);
+        return $results;
+    }
+
+    public function show($id) {
+
+        $result = $this->service->getUserById($id);
+        return $result;
+    }
+
     public function store(Request $request) {
 
         $inputs = array_filter($request->only(self::ATTRIBUTES), function ($v)

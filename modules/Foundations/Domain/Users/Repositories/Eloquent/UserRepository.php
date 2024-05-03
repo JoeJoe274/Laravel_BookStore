@@ -27,4 +27,23 @@ class UserRepository extends BaseRepository implements UserRepositoryInterface
             return 'Unauthorised';
         }
     }
+
+    public function getUsers(array $params)
+    {
+        return $this->connection()
+        ->orderBy('users.created_at', 'desc')
+        ->get();
+    }
+
+    public function getTotal(array $params)
+    {
+        return $this->connection()
+        ->count('users.id');
+    }
+
+    public function getUserById($id)
+    {
+        return $this->connection()
+        ->find($id);
+    }
 }

@@ -29,4 +29,24 @@ class OrderDetailRepository extends BaseRepository implements OrderDetailReposit
         ->find($id);
     }
 
+    // public function createOrderDetail(array $params)
+    // {
+    //     return $this->connection()
+    //     ->create($params);
+    // }
+
+    public function getOrderDetailByOrderId($id)
+    {
+        return $this->connection()
+        ->where('order_details.order_id', '=', $id)
+        ->get();
+    }
+
+    public function getOrderDetailBy($attribute, $value)
+    {
+        return $this->connection()
+            ->where($attribute, '=', $value)
+            ->first();
+    }
+
 }

@@ -27,17 +27,17 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 // Route::get('/book', [BookController::class, 'index']);
 Route::middleware('auth:sanctum')->group(function () {
 Route::get('/books', [BookController::class, 'index']);
-Route::get('/books/{id}', [BookController::class, 'show']);
-Route::post('/books', [BookController::class, 'store']);
-Route::put('/books/{id}', [BookController::class, 'update']);
-Route::delete('/books/{id}', [BookController::class, 'delete']);
+Route::get('/book/{id}', [BookController::class, 'show']);
+Route::post('/book', [BookController::class, 'store']);
+Route::put('/book/{id}', [BookController::class, 'update']);
+Route::delete('/book/{id}', [BookController::class, 'delete']);
 Route::post('/books/{id}/upload', [BookController::class, 'upload']);
 
-Route::get('/customers', [CustomerController::class, 'index']);
-Route::get('/customers/{id}', [CustomerController::class, 'show']);
+// Route::get('/customers', [CustomerController::class, 'index']);
+Route::get('/customer/{id}', [CustomerController::class, 'show']);
 Route::post('/customers', [CustomerController::class, 'store']);
-Route::put('/customers/{id}', [CustomerController::class, 'update']);
-Route::delete('/customers/{id}', [CustomerController::class, 'delete']);
+Route::put('/customer/{id}', [CustomerController::class, 'update']);
+Route::delete('/customer/{id}', [CustomerController::class, 'delete']);
 
 Route::get('/book/reviews', [BookReviewController::class, 'index']);
 Route::get('/book/{id}/reviews', [BookReviewController::class, 'show']);
@@ -45,19 +45,19 @@ Route::post('/book/reviews', [BookReviewController::class, 'store']);
 Route::delete('/book/{id}/reviews', [BookReviewController::class, 'delete']);
 
 Route::get('/orders', [OrderController::class, 'index']);
-Route::get('/orders/{id}', [OrderController::class, 'show']);
+Route::get('/order/{id}', [OrderController::class, 'show']);
 Route::post('/orders', [OrderController::class, 'store']);
-Route::put('/orders/{id}', [OrderController::class, 'update']);
-Route::delete('/orders/{id}', [OrderController::class, 'delete']);
+Route::put('/order/{id}', [OrderController::class, 'update']);
+Route::delete('/order/{id}', [OrderController::class, 'delete']);
 
 Route::get('/orderdetails', [OrderDetailController::class, 'index']);
-Route::get('/orderdetails/{id}', [OrderDetailController::class, 'show']);
-Route::post('/orderdetails', [OrderDetailController::class, 'store']);
-Route::delete('/orderdetails/{id}', [OrderDetailController::class, 'delete']);
+Route::get('/orderdetail/{id}', [OrderDetailController::class, 'show']);
+Route::post('/orderdetail', [OrderDetailController::class, 'store']);
+Route::delete('/orderdetail/{id}', [OrderDetailController::class, 'delete']);
 });
 // Route::post('books', [BookController::class, 'getBooks']);
 
-Route::get('/user', [UserController::class, 'index']);
-Route::get('/user/show/{id}', [UserController::class, 'show']);
+Route::get('/users', [UserController::class, 'index']);
+Route::get('/user/{id}', [UserController::class, 'show']);
 Route::post('/user', [UserController::class, 'store']);
 Route::post('/user/signin', [UserController::class, 'SignIn']);

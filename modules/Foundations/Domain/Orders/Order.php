@@ -5,6 +5,8 @@ namespace BookStore\Foundations\Domain\Orders;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use BookStore\Foundations\Domain\OrderDetails\OrderDetail;
+use BookStore\Foundations\Domain\Customers\Customer;
 
 class Order extends Model
 {
@@ -16,4 +18,10 @@ class Order extends Model
         'amount',
         'date',
     ];
+
+    public function details()
+    {
+        return $this->hasMany(OrderDetail::class);
+    }
+
 }

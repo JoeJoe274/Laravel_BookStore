@@ -41,6 +41,13 @@ class BaseRepository implements BaseRepositoryInterface
         return $query['id'];
     }
 
+    public function insertOrderDetail(array $params, $useModel = false)
+    {
+        $query = $this->insert($params, $useModel);
+
+        return $query['id'];
+    }
+
     public function update($id, array $params)
     {
         $query = $this->connection(true)
@@ -59,5 +66,42 @@ class BaseRepository implements BaseRepositoryInterface
         }
 
         return $query;
+    }
+
+    public function deleteBy($attribute, $value)
+    {
+        $query = $this->connection(true)
+            ->where($attribute, '=', $value)
+            ->delete();
+
+        if (!$query) {
+            throw new DbErrorException("Deleting a row was failed.");
+        }
+
+        return $query;
+    }
+
+/**
+     * Begin DB transaction.
+     */
+    public function beginTransaction()
+    {
+        DB::beginTransaction();
+    }
+
+    /**
+     * DB transaction rollback.
+     */
+    public function rollback()
+    {
+        DB::rollback();
+    }
+
+    /**
+     * DB transaction commit.
+     */
+    public function commit()
+    {
+        DB::commit();
     }
 }

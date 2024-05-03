@@ -25,7 +25,7 @@ class BookReviewController extends BaseController
 
     public function index(Request $request)
     {
-        $inputsSpecification = $request->only(
+            $inputsSpecification = $request->only(
             'book_id',
             'description'
         );
