@@ -17,4 +17,8 @@ class Customer extends Model
         'city'
     ];
 
+    public function order()
+    {
+        return $this->hasMany(Order::class);
+    }
 }

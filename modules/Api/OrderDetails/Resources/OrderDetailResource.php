@@ -16,6 +16,7 @@ class OrderDetailResource extends JsonResource
             'qty'            =>  $this->qty,
             'created_at'     =>  $this->created_at->format('Y-m-d h:i:s'),
             'updated_at'     =>  $this->updated_at->format('Y-m-d h:i:s'),
+            'book'           =>  $this->book()->first()
         ];
     }
 }

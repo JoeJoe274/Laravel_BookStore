@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use BookStore\Foundations\Domain\Orders\Order;
+use BookStore\Foundations\Domain\Books\Book;
 
 class OrderDetail extends Model
 {
@@ -21,6 +22,11 @@ class OrderDetail extends Model
     public function order()
     {
         return $this->belongsTo(Order::class);
+    }
+
+    public function book()
+    {
+        return $this->belongsTo(Book::class);
     }
 
     protected $hidden = ['deleted_at'];

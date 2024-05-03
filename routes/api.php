@@ -33,13 +33,13 @@ Route::put('/book/{id}', [BookController::class, 'update']);
 Route::delete('/book/{id}', [BookController::class, 'delete']);
 Route::post('/books/{id}/upload', [BookController::class, 'upload']);
 
-// Route::get('/customers', [CustomerController::class, 'index']);
+Route::get('/customers', [CustomerController::class, 'index']);
 Route::get('/customer/{id}', [CustomerController::class, 'show']);
 Route::post('/customers', [CustomerController::class, 'store']);
 Route::put('/customer/{id}', [CustomerController::class, 'update']);
 Route::delete('/customer/{id}', [CustomerController::class, 'delete']);
 
-Route::get('/book/reviews', [BookReviewController::class, 'index']);
+// Route::get('/book/reviews', [BookReviewController::class, 'index']);
 Route::get('/book/{id}/reviews', [BookReviewController::class, 'show']);
 Route::post('/book/reviews', [BookReviewController::class, 'store']);
 Route::delete('/book/{id}/reviews', [BookReviewController::class, 'delete']);

@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use BookStore\Foundations\Domain\BookReviews\BookReview;
+use BookStore\Foundations\Domain\OrderDetails\OrderDetail;
 
 class Book extends Model
 {
@@ -24,6 +25,11 @@ class Book extends Model
     public function reviews()
     {
         return $this->hasMany(BookReview::class);
+    }
+
+    public function details()
+    {
+        return $this->hasMany(OrderDetail::class);
     }
 
 }
